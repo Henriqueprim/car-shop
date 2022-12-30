@@ -22,6 +22,14 @@ class CarService {
     const carsArray = carList.map((car) => this.carDomain(car));
     return carsArray;
   }
+
+  public async findById(id: string) {
+    const car = await this.model.findById(id);
+    if (!car) {
+      throw new Error('Car not found');
+    }
+    return this.carDomain(car);
+  }
 }
 
 export default CarService;
