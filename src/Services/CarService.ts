@@ -14,7 +14,13 @@ class CarService {
 
   public async create(car: ICar) {
     const createdCar = await this.model.create(car);
-    return new Car(createdCar);
+    return this.carDomain(createdCar);
+  }
+
+  public async getAll() {
+    const carList = await this.model.getAll();
+    const carsArray = carList.map((car) => this.carDomain(car));
+    return carsArray;
   }
 }
 
