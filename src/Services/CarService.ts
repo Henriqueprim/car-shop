@@ -1,4 +1,5 @@
 import Car from '../Domains/Car';
+import CustomError from '../Error/CustomError';
 import ICar from '../Interfaces/ICar';
 import CarODM from '../Models/CarODM';
 
@@ -26,7 +27,7 @@ class CarService {
   public async findById(id: string) {
     const car = await this.model.findById(id);
     if (!car) {
-      throw new Error('Car not found');
+      throw new CustomError('Car not found', 404);
     }
     return this.carDomain(car);
   }
