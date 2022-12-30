@@ -3,6 +3,7 @@ import Sinon from 'sinon';
 import { expect } from 'chai';
 import Car from '../../../src/Domains/Car';
 import ICar from '../../../src/Interfaces/ICar';
+import CarService from '../../../src/Services/CarService';
 
 describe('Tests /cars services', function () {
   it('Should create a car successfully', async function () {
