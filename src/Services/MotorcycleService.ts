@@ -1,4 +1,5 @@
 import Motorcycle from '../Domains/Motorcycle';
+import CustomError from '../Error/CustomError';
 import IMotorcycle from '../Interfaces/IMotorcycle';
 import MotorcycleODM from '../Models/MotorcyleODM';
 
@@ -21,6 +22,14 @@ class MotorcycleService {
     const bikeList = await this.model.getAll();
     const bikeArray = bikeList.map((bike) => this.bikeDomain(bike));
     return bikeArray;
+  }
+
+  public async findById(id: string) {
+    const bike = await this.model.findById(id);
+    if (!bike) {
+      throw new CustomError('Motorcycle not found', 404);
+    }
+    return this.bikeDomain(bike);
   }
 }
 
