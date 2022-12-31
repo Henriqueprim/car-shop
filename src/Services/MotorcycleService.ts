@@ -31,6 +31,14 @@ class MotorcycleService {
     }
     return this.bikeDomain(bike);
   }
+
+  public async update(id: string, obj: Partial<IMotorcycle>) {
+    const updateBike = await this.model.update(id, obj);
+    if (!updateBike) {
+      throw new CustomError('Motorcycle not found', 404);
+    }
+    return this.bikeDomain(updateBike);
+  }
 }
 
 export default MotorcycleService;
