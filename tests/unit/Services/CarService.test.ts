@@ -77,4 +77,21 @@ describe('Tests /cars services', function () {
     const result = await service.findById(idInput);
     expect(result).to.be.deep.equal(carMock);
   });
+
+  it('Should update a car info by its id', async function () {
+    const idInput = '634852326b35b59438fbea2f';
+    const carUpdate: ICar = {
+      model: 'Marea',
+      year: 2002,
+      color: 'Red',
+      status: true,
+      buyValue: 15.99,
+      doorsQty: 4,
+      seatsQty: 5,
+    };
+    const carOutput: Car = new Car(carUpdate);
+    Sinon.stub(Model, 'findByIdAndUpdate').resolves(carOutput);
+    const result = await service.update(idInput, carUpdate);
+    expect(result).to.be.deep.equal(carOutput);
+  });
 });
