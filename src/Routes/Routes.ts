@@ -9,4 +9,6 @@ route.get('/cars', (req, res, next) => new CarController(req, res, next).getAll(
 
 route.get('/cars/:id', (req, res, next) => new CarController(req, res, next).findById());
 
+route.put('/cars/:id', (req, res, next) => new CarController(req, res, next).update());
+
 export default route;
