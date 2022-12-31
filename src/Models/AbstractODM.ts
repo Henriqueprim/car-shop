@@ -25,7 +25,7 @@ abstract class AbstractODM<T> {
 
   public async update(_id: string, obj: Partial<T>):
   Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new CustomError('Invalid Mongo id', 422);
+    if (!isValidObjectId(_id)) throw new CustomError('Invalid mongo id', 422);
     return this.model.findByIdAndUpdate(
       { _id },
       { ...obj } as UpdateQuery<T>,
@@ -34,7 +34,7 @@ abstract class AbstractODM<T> {
   }
 
   public async findById(id: string): Promise<T | null> {
-    if (!isValidObjectId(id)) throw new CustomError('Invalid Mongo id', 422);
+    if (!isValidObjectId(id)) throw new CustomError('Invalid mongo id', 422);
     return this.model.findById(id);
   }
 
