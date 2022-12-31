@@ -1,15 +1,18 @@
 import { Model } from 'mongoose';
 import Sinon from 'sinon';
 import { expect } from 'chai';
+import IMotorcyle from '../../../src/Interfaces/IMotorcycle';
+import Motorcycle from '../../../src/Domains/Motorcycle';
+import MotorcycleService from '../../../src/Services/MotorcycleService';
 
 describe('Tests /motorcycles services', function () {
   const service = new MotorcycleService();
-  afterEach(function () {
-    Sinon.restore();
-  });
+  // afterEach(function () {
+  //   Sinon.restore();
+  // });
 
   it('Shoud create a motorcycle successfully', async function () {
-    const bikeInput: IBike = {
+    const bikeInput: IMotorcyle = {
       model: 'Honda Cb 600f Hornet',
       year: 2005,
       color: 'Yellow',
