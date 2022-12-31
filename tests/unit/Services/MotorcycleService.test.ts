@@ -58,4 +58,22 @@ describe('Tests /motorcycles services', function () {
     const result = await service.getAll();
     expect(result).to.be.deep.equal(bikeListOutput);
   });
+
+  it('Should find a motorcycle by its id', async function () {
+    const idInput = '634852326b35b59438fbea2f';
+    const bikeMock: IMotorcyle = {
+      id: '634852326b35b59438fbea31',
+      model: 'Honda Cbr 1000rr',
+      year: 2011,
+      color: 'Orange',
+      status: true,
+      buyValue: 59.900,
+      category: 'Street',
+      engineCapacity: 1000,
+    };
+    const bikeOutput: Motorcycle = new Motorcycle(bikeMock);
+    Sinon.stub(Model, 'findById').resolves(bikeOutput);
+    const result = await service.findById(idInput);
+    expect(result).to.be.deep.equal(bikeMock);
+  });
 });
