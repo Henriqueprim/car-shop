@@ -31,6 +31,14 @@ class CarService {
     }
     return this.carDomain(car);
   }
+
+  public async update(id: string, obj: Partial<ICar>) {
+    const updateCar = await this.model.update(id, obj);
+    if (!updateCar) {
+      throw new CustomError('Car not found', 404);
+    }
+    return this.carDomain(updateCar);
+  }
 }
 
 export default CarService;
