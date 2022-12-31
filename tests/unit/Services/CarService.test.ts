@@ -7,6 +7,9 @@ import CarService from '../../../src/Services/CarService';
 
 describe('Tests /cars services', function () {
   const service = new CarService();
+  afterEach(function () {
+    Sinon.restore();
+  });
 
   it('Should create a car successfully', async function () {
     const carInput: ICar = {
@@ -71,11 +74,7 @@ describe('Tests /cars services', function () {
     };
     const carOutput: Car = new Car(carMock);
     Sinon.stub(Model, 'findById').resolves(carOutput);
-    const result = service.findById(idInput);
-    expect(result).to.be.deep.equal(carOutput);
-  });
-
-  afterEach(function () {
-    Sinon.restore();
+    const result = await service.findById(idInput);
+    expect(result).to.be.deep.equal(carMock);
   });
 });
