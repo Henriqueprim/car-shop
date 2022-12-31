@@ -16,6 +16,12 @@ class MotorcycleService {
     const createdBike = await this.model.create(bike);
     return this.bikeDomain(createdBike);
   }
+
+  public async getAll() {
+    const bikeList = await this.model.getAll();
+    const bikeArray = bikeList.map((bike) => this.bikeDomain(bike));
+    return bikeArray;
+  }
 }
 
 export default MotorcycleService;
