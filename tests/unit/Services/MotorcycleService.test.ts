@@ -44,7 +44,7 @@ describe('Tests /motorcycles services', function () {
       },
       {
         id: '634852326b35b59438fbea31',
-        model: 'Honda Cbr 1000rr',
+        model: 'Honda Cbr 1000r',
         year: 2011,
         color: 'Orange',
         status: true,
