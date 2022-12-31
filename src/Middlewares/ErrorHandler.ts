@@ -1,13 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
+import CustomError from '../Error/CustomError';
 
 class ErrorHandler {
   public static handle(
-    error: Error,
+    error: CustomError,
     _req: Request,
     res: Response,
     next: NextFunction,
   ) {
-    res.status(500).json({ message: error.message });
+    res.status(error.status).json({ message: error.message });
     next();
   }
 }
